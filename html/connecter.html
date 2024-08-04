@@ -163,7 +163,6 @@
                 <option value="treichville">Treichville</option>
                 <option value="Plateau">Plateau</option>
                 <option value="bassam">Bassam</option>
-
             </select>
             <div class="bouttonDeRecherche"><button id="recherche">recherche</button></div>
         </div>
@@ -172,7 +171,7 @@
 
         <div class="grid grid-cols-2 gap-4 p-4 bg-orange-500"  style="display: none;" id="resultSearch">
             <h1 class="display-5 text-uppercase mb-4">Resultat<span class="text-primary"> des</span> recherche</h1>
-            
+            <p id="messageEnCasDeNonTrouve" style="display: none;"></p>
         </div>
 
     <!-- About Start -->
@@ -211,7 +210,7 @@
     <!-- Services Start -->
     <div class="container-fluid bg-light py-6 px-5" >
         <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h1 class="display-5 text-uppercase mb-4">NOUS FOURNISSONS <span class="text-primary">LES MEILLEURS</span> SERVICES ARTISANAL</h1>
+            <h1 class="display-5 text-uppercase mb-4">NOUS FOURNISSONS <span class="text-primary">LES MEILLEURS</span> SERVICES ARTISANAUX</h1>
         </div>
         <div class="row g-5">
             <div class="col-lg-4 col-md-6">
@@ -759,6 +758,45 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+
+
+
+
+
+    <!-- Loading Indicator -->
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+      <style>
+        #loading {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent background */
+          z-index: 50;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .loader {
+          border: 8px solid #f3f3f3; /* Light grey */
+          border-top: 8px solid #FD5D14; /* Orange */
+          border-radius: 50%;
+          width: 64px;
+          height: 64px;
+          animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      </style>
+
+
 
 
     <!-- JavaScript Libraries -->
