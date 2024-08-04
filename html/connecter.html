@@ -149,7 +149,7 @@
     <!-- seach bar -->
     <div class="seachbardiv" style="width: 100%; height: 100px; display: flex; justify-content: center; align-items: center;">
         <div class="searchBar">
-            <input type="text" class="seach" placeholder="Rechercher un plombier, marçon, menusier, peintre, autres">
+            <input id="searchBar" name="searchBar" type="text" class="seach" placeholder="Rechercher un plombier, marçon, menusier, peintre, autres">
             <select class="select" name="select" id="select">
                 <option value="" disabled selected>Chosissez votre Localité</option>
                 <option value="Abobo">Abobo</option>
@@ -165,9 +165,15 @@
                 <option value="bassam">Bassam</option>
 
             </select>
-            <div class="bouttonDeRecherche"><button>recherche</button></div>
+            <div class="bouttonDeRecherche"><button id="recherche">recherche</button></div>
         </div>
     </div>
+<!-- popup recherche -->
+
+        <div class="grid grid-cols-2 gap-4 p-4 bg-orange-500"  style="display: none;" id="resultSearch">
+            <h1 class="display-5 text-uppercase mb-4">Resultat<span class="text-primary"> des</span> recherche</h1>
+            
+        </div>
 
     <!-- About Start -->
     <div class="container-fluid py-6 px-5">
@@ -177,13 +183,6 @@
                 <h4 class="text-uppercase mb-3 text-body">Nous proposons des artisans de qualité avec un savoir faire exceptionnel à nos different clients en fonction de leurs besoins</h4>
                 <p>Nos artisans sont des chefs d'oeuvre d'art de tous types avec des certificats reconnu dans le secteur artisanal. satisfaire ou rembousser</p>
                 
-                <!-- seach bar -->
-                <!-- <div class="searchBar">
-                    <input type="text" class="seach" placeholder="Rechercher un plombier, marçon, menusier, peintre, autres">
-                    <div class="bouttonDeRecherche"><button>recherche</button></div>
-                </div> -->
-                
-
                 <div class="row gx-5 py-2">
                     <div class="col-sm-6 mb-2">
                         <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>Planification parfaite</p>
