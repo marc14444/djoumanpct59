@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Client</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-orange-500">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+        <div class="flex items-center mb-4">
+            <button class="text-black" id="boutonRetour">
+                <img src="./../icons/fleche-gauche.png" alt="" class="w-6 h-6">
+            </button>
+            <h2 class="ml-2 text-lg font-bold">Inscrivez-vous en tant que Client</h2>
+        </div>
+        <div class="flex justify-center mb-4">
+            <img src="./../icons/agent.png" alt="User Avatar" class="rounded-full" width="80px" height="80px">
+        </div>
+        <form id="inscriptionForm">
+            <div class="space-y-4">
+                <input id="nomClient" name="nomClient" type="text" placeholder="Nom" class="w-full p-3 rounded-lg bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                <input id="prenomClient" name="prenomClient" type="text" placeholder="Prénom" class="w-full p-3 rounded-lg bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                <input id="telClient" name="telClient" type="tel" placeholder="Numéro de téléphone" class="w-full p-3 rounded-lg bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-orange-500" required minlength="10">
+                <input id="emailClient" name="emailClient" type="email" placeholder="Email" class="w-full p-3 rounded-lg bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                <input id="passwordClient" name="passwordClient" type="password" placeholder="Mot de passe" class="w-full p-3 rounded-lg bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-orange-500" required minlength="6">
+                <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirmé Mot de passe" class="w-full p-3 rounded-lg bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-orange-500" required minlength="6">
+            </div>
+            <button class="w-full mt-6 p-3 bg-black text-white rounded-lg" id="submitClient">Enregistrer</button>
+        </form>
+        <div class="text-center text-black dark:text-white mb-4">S'inscrire avec:</div>
+        <div class="flex items-center justify-center mt-4">
+            <div class="flex space-x-2 ml-2">
+                <img src="./../icons/google.png" alt="Google" class="w-6 h-6">
+                <img src="./../icons/facebook.png" alt="Facebook" class="w-6 h-6">
+                <img src="./../icons/instagram.png" alt="Instagram" class="w-6 h-6">
+                <img src="./../icons/x.png" alt="X" class="w-6 h-6">
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <span class="text-zinc-500">Vous avez déjà un compte? </span>
+            <a href="./connexion.html" class="text-orange-500">Connectez-vous</a>
+        </div>
+    </div>
+    <div id="loading" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-64 w-64"></div>
+    </div>
+    <div id="successPopup" class="hidden fixed inset-0 flex items-center justify-center z-50">
+        <div class="bg-white p-4 rounded-lg shadow-lg">
+            <p id="successMessage"></p>
+        </div>
+    </div>
+    <style>
+        .loader {
+            border-top-color: #FD5D14;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script src="./../js/inscriptionUser.js"></script>
+    <script src="./../js/boutonRetour.js"></script>
+</body>
+</html>

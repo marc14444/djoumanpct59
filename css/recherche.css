@@ -1,0 +1,77 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #FD5D14;
+}
+.content{
+    width: 100%;
+    height: 100px;
+    background: #FD5D14;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.titre{
+    font-family: "Poppins",sans-serif;
+}
+.cardvide{
+    width: 10%;
+    height: 30px;
+}
+.grandcard{
+    width: 100%;
+    height: 500px;
+    background: #FD5D14;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cardImage{
+    width: 45%;
+    height: 500px auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.btnretour{
+    cursor: pointer;
+}
+.cardcontenuerecherche{
+    width: 45%;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+.element1{
+    width: 70%;
+    height: 80px;
+    border: 5px solid black;
+    border-radius: 30px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+    font-family: "Poppins",sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.cercleImage{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.element1:hover{
+    background: #FD5D14;
+    color: black ;
+}
+.element1:focus{
+    background: #FD5D14;
+    color: black ;
+}

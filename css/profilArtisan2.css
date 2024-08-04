@@ -1,0 +1,151 @@
+body{
+    height: 100%;
+    width: 1500px;
+    background-color: orangered;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins',sans-serif;
+}
+.grdiv{
+    height: 1500px;
+    width: 800px;
+    /* background-color: turquoise; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+h3{
+    font-size: 2.3rem;
+}
+.profil{
+    height: 600px;
+    width: auto;
+    /* background-color: green;  */
+    /* border-radius: 20px; */
+
+}
+.artisan{
+    width: 600px;
+    height: 90vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: 100px;
+} 
+.image{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    /* background-color: bisque; */
+    margin-bottom: 10px;
+    padding-top: 10px;
+    
+}
+.info{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: violet; */
+    gap: 70px;
+}
+.presentation{
+    width: 200px;
+    height: auto;
+    /* background-color: dodgerblue; */
+
+}
+.coordonnees{
+    width: 100px;
+    height: auto;
+    /* background-color: red; */
+}
+.coordonnee1{
+    width: 100%;
+    height: 50px;
+    /* background-color: rgb(22, 236, 165); */
+}
+.btn{
+    width: 100%;
+    height: 100px;
+    /* background-color: blue;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+#modif{
+    padding: 20px 40px;
+    background-color: orangered;
+    border: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.image1{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    /* background-color: rgb(22, 236, 165); */
+}
+.titre{
+    height: 50px;
+    width: 100%;
+    /* background-color: aqua; */
+    /* display: flex;
+    padding: 0px 30px;
+    justify-content: center;
+    align-items: center; */
+}
+#retour{
+    width: 50px;
+    height: 50px;
+    /* background-color: rgb(22, 236, 165); */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 20px;
+}
+#back{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+.title{
+    height: 50px;
+    width: 100%;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+
+@media(max-width:1511px){
+    .grdiv{
+        width: 80%;
+    }
+}
+@media(max-width:900px){
+    .grdiv{
+        width: 28%;
+    }
+    .artisan{
+        width: 450px;
+        margin-left: -350px;
+    }
+    .info{
+        width: 100%;
+        gap: 10px;
+    }
+    .bouton{
+        width: 100%;
+        gap: 30px;
+    }
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Djouman</title>
+  <!-- Link Styles -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="icon" href="./image/Logo.jpg" type="image/x-icon" >
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo_details">
+      <img src="./image/Logo.jpg" alt="logo" class="logo">
+      <div class="logo_name">Djuman</div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <i class="bx bx-search"></i>
+        <input type="text" placeholder="Recherche...">
+         <span class="tooltip">Recherche</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-grid-alt"></i>
+          <span class="link_name">Dashboard</span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-user"></i>
+          <span class="link_name">Clients</span>
+        </a>
+        <span class="tooltip">Clients</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-wrench' ></i>
+          <span class="link_name">Artisan</span>
+        </a>
+        <span class="tooltip">Artisan</span>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class='bx bx-briefcase'></i>
+          <span class="link_name">Realisation</span>
+        </a>
+        <span class="tooltip">Realisation</span>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class='bx bxs-city'></i>
+          <span class="link_name">Commune</span>
+        </a>
+        <span class="tooltip">Commune</span>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="bx bx-chat"></i>
+          <span class="link_name">Messagerie</span>
+        </a>
+        <span class="tooltip">Messagerie</span>
+      </li>
+      
+      <li>
+        <a href="#">
+          <i class='bx bx-bell'></i>
+          <span class="link_name">Notification</span>
+        </a>
+        <span class="tooltip">Notification</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-history'></i>
+          <span class="link_name">Historique</span>
+        </a>
+        <span class="tooltip">Historique</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-cog"></i>
+          <span class="link_name">Parametre</span>
+        </a>
+        <span class="tooltip">Parametre</span>
+      </li>
+      <li class="profile">
+        <div class="profile_details">
+          <img src="./image/profile.jpeg" alt="profile image">
+          <div class="profile_content">
+            <div class="name">Nom de l'Admin</div>
+            <div class="designation">Admin</div>
+          </div>
+        </div>
+        <i class="bx bx-log-out" id="log_out"></i>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="navbar-brand ml-2">Administrateur</div>
+      <div class="ml-auto d-flex align-items-center">
+        <img src="./image/profile.jpeg" alt="profile image" class="rounded-circle" style="width: 40px; height: 40px;">
+        <i class='bx bx-chevron-down ml-2' id="profileDropdown" style="cursor: pointer;"></i>
+      </div>
+      <div id="profileInfo" class="dropdown-menu dropdown-menu-right p-3" style="display: none; position: absolute; right: 10px; top: 60px;">
+        <div class="dropdown-item">Nom: Admin name</div>
+        <div class="dropdown-item">Role: Admin</div>
+        <div class="dropdown-item">Email: admin@example.com</div>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item text-center text-primary">Voir plus</a>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <div class="row">
+      
+        <div class="col-lg-6 col-md-6 mb-4">
+          <a href="#" class="card-link">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class="bx bx-grid-alt bx-lg"></i>
+                <h5 class="card-title mt-3">Dashboard</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 mb-4">
+          <a href="#" class="card-link">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class="bx bx-user bx-lg"></i>
+                <h5 class="card-title mt-3">Clients</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 mb-4">
+          <a href="#" class="card-link">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class='bx bx-wrench bx-lg'></i>
+                <h5 class="card-title mt-3">Artisan</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 mb-4">
+          <a href="#" class="card-link">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class='bx bx-briefcase bx-lg'></i>
+                <h5 class="card-title mt-3">Realisation</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 mb-4">
+          <a href="#" class="card-link">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class="bx bx-chat bx-lg"></i>
+                <h5 class="card-title mt-3">Messagerie</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 mb-4">
+          <a href="#" class="card-link">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class='bx bx-bell bx-lg'></i>
+                <h5 class="card-title mt-3">Notification</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 mb-4">
+          <a href="#" class="card-link">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class='bx bx-history bx-lg'></i>
+                <h5 class="card-title mt-3">Historique</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 mb-4">
+          <a href="#" class="card-link">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class="bx bx-cog bx-lg"></i>
+                <h5 class="card-title mt-3">Parametre</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+body{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background: #FD5D14;
+}
+
+form{
+    width: 800px;
+    height: auto;
+    border: 2px solid black;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.393);
+    display: grid;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 50px;
+    background: #F4F6F8;
+}
+
+.bouttonRetourEtTitre{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5%;
+    margin-top: 50px;
+    
+}
+.bouttonRetour{
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.titre{
+    width: 500px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bouttonRetour img{
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+}
+.titre p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'inter',sans-serif;
+}
+.iconArtisan{
+    width: 100%;
+    height: 91px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.iconArtisan img {
+    width: 92px;
+    height: 91px;
+    border-radius: 100%;
+}
+.divdesInput{
+    width: 100%;
+    height: 91px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+.divdesInput input{
+    width: 300px;
+    height: 40px;
+    border-radius: 50px;
+    background: #D9D9D9;
+    border: none;
+    outline-style: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 1.2rem;
+    font-family: 'inter',sans-serif;
+}
+.divdesInput input::placeholder{
+    color: black;
+}
+.divDuBouttonEnregistrer{
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+.divDuBouttonEnregistrer button{
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    background: black;
+    border: none;
+    color: #F4F6F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+hr{
+    width: 100%;
+    height: 2px;
+    background: #D9D9D9;
+}
+.textEnBas{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-family: 'inter',sans-serif;
+}
+.lesIconesMediatiques{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.entoureLesMediat{
+    width: 35%;
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.entoureLesMediat div{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.textConnectivitez{
+    width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+.textConnectivitez p{
+    font-size: 1.2rem;
+    font-family: 'inter',sans-serif;
+}
+.textConnectivitez p a{
+    text-decoration: none;
+    color: #FD5D14;
+}
+@media screen and (max-width:900px) {
+    form{
+        width: 500px;
+        height: auto;
+    }
+    .bouttonRetourEtTitre{
+        width: 80%;
+        height: 50px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 50px;
+        margin-left: 10%;
+        
+        
+    }
+    .titre{
+        width: 400px;
+        height: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+    .titre p{
+        font-size: 1.1rem;
+        font-weight: bold;
+        font-family: 'inter',sans-serif;
+    }
+    .bouttonRetour{
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .divdesInput input{
+        width: 150px;
+    }
+    hr{
+        width: 80%;
+    }
+    .iconArtisan{
+        width: 80%;
+        margin-left: 10%;
+    }
+    .divdesInput{
+        width: 80%;
+        height: 91px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 2px;
+        margin-left: 10%;
+    }
+    
+.divDuBouttonEnregistrer button{
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    background: black;
+    border: none;
+    color: #F4F6F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+.textEnBas{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-family: 'inter',sans-serif;
+}
+.lesIconesMediatiques{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.entoureLesMediat{
+    width: 35%;
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.entoureLesMediat div{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.textConnectivitez{
+    width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+}
+@media screen and (max-width:500px) {
+    form{
+        width: 380px;
+        height: auto;
+    }
+    .divdesInput input{
+        width: 100px;
+    }
+    .divDuBouttonEnregistrer{
+        width: 80%;
+        height: 60px;
+        margin-left: 10%;
+    }
+    .textConnectivitez{
+        width: 80%;
+        height: 60px;
+        margin-left: 10%;
+    }
+    .lesIconesMediatiques{
+        width: 80%;
+        height: 60px;
+        margin-left: 10%;
+    }
+    .textEnBas{
+        width: 80%;
+        height: 60px;
+        margin-left: 10%;
+    }
+    .textConnectivitez p{
+        font-size: 1.1rem;
+        font-family: 'inter',sans-serif;
+    }
+    
+}

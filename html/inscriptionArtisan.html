@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Artisan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <style>
+        .loader {
+            border-top-color: #FD5D14;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <div class="min-h-screen flex items-center justify-center bg-orange-500">
+        <div class="bg-white rounded-3xl shadow-lg p-8 w-full max-w-3xl">
+            <button class="text-xl mb-4" id="boutonRetour">
+                <img src="./../icons/fleche-gauche.png" alt="" class="w-6 h-6">
+            </button>
+            <h1 class="text-2xl font-bold text-center mb-6">Inscrivez-vous en tant que Artisan</h1>
+            <div class="flex justify-center mb-6">
+                <img src="./../icons/artisan.png" alt="User Avatar" class="rounded-full" width="90px" height="90px">
+            </div>
+            <form id="inscriptionForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" name="nomArtisan" placeholder="Nom" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="text" name="prenomArtisan" placeholder="Prenom" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="tel" name="telArtisan" placeholder="Numero de téléphone (whatsapp)" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="text" name="adresseArtisan" placeholder="Commune" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="email" name="emailArtisan" placeholder="Email" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="text" name="metier" placeholder="Metier" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="text" name="longitude" id="longitude" placeholder="Longitude" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="text" name="latitude" id="latitude" placeholder="Latitude" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="text" name="local" placeholder="Ville" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="text" name="alphabetisation" placeholder="Savez-vous lire et écrire?" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="text" name="nomEntreprise" placeholder="Nom de votre entreprise" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="password" name="passwordArtisan" placeholder="mot de passe" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="password" name="confirmPasswordArtisan" placeholder="confirmer le mot de passe" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <div class="file-input-container mb-4">
+                    <input type="time" name="ouverture" placeholder="heure d'ouverture'" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    <label for="time1" class="placeholder">Heure d'ouverture</label>
+                </div>
+                <div class="file-input-container mb-4">
+                    <input type="time" name="fermeture" placeholder="heure de fermeture" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    <label for="time1" class="placeholder">Heure de fermeture</label>
+                </div>
+                <input type="number" placeholder="Années d'experience" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <div class="file-input-container mb-4">
+                    <input type="file" name="recto" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500" id="file1">
+                    <label for="file1" class="placeholder">Recto de votre CNI</label>
+                </div>
+                <div class="file-input-container mb-4">
+                    <input type="file" name="verso" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500" id="file2">
+                    <label for="file2"  class="placeholder">Verso de votre CNI</label>
+                </div>
+                <div class="file-input-container mb-4">
+                    <input type="file" name="selfie" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500" id="file3">
+                    <label for="file3" class="placeholder">Ajouter une photo de profil</label>
+                </div>
+                <div class="col-span-full flex justify-center mt-4">
+                    <button class="bg-black text-white py-3 px-6 rounded-lg">Enregistrer</button>
+                </div>
+            </form>
+            <div class="flex items-center justify-center mt-6">
+                <hr class="w-full border-zinc-300">
+            </div>
+            <div class="text-center text-black dark:text-white mb-4">S'inscrire avec:</div>
+            <div class="flex items-center justify-center mt-4">
+                <div class="flex space-x-4 ml-4">
+                    <img src="./../icons/google.png" alt="Google" class="w-6 h-6">
+                    <img src="./../icons/facebook.png" alt="Facebook" class="w-6 h-6">
+                    <img src="./../icons/instagram.png" alt="Instagram" class="w-6 h-6">
+                    <img src="./../icons/x.png" alt="X" class="w-6 h-6">
+                </div>
+            </div>
+            <div class="flex justify-center mt-4">
+                <span>Vous avez déjà un compte? <a href="./connexion.html" class="text-orange-500">Connectez-vous</a></span>
+            </div>
+        </div>
+    </div>
+    <div id="loading" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-64 w-64"></div>
+    </div>
+    <div id="successPopup" class="hidden fixed inset-0 flex items-center justify-center z-50">
+        <div class="bg-white p-4 rounded-lg shadow-lg">
+            <p id="successMessage"></p>
+        </div>
+    </div>
+    <script src="./../js/boutonRetour.js"></script>
+    <script>
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    this.nextElementSibling.style.display = 'none';
+                } else {
+                    this.nextElementSibling.style.display = 'block';
+                }
+            });
+        });
+        // Get the input fields
+    const longitudeInput = document.getElementById('longitude');
+    const latitudeInput = document.getElementById('latitude');
+
+    // Vérifiez si le navigateur prend en charge la géolocalisation
+    if (navigator.geolocation) {
+    // Obtenez la position actuelle de l'utilisateur
+    navigator.geolocation.getCurrentPosition(position => {
+        const longitude = position.coords.longitude;
+        const latitude = position.coords.latitude;
+
+        // Mettre à jour les champs de saisie avec les valeurs actuelles
+        longitudeInput.value = longitude;
+        latitudeInput.value = latitude;
+    }, erreur => {
+        console.error('Erreur lors de la récupération de la localisation:', erreur);
+    });
+    } else {
+    console.log('La géolocalisation n\'est pas prise en charge par ce navigateur.');
+    }
+
+    document.getElementById('loading').classList.remove('hidden');
+
+setTimeout(() => {
+    document.getElementById('loading').classList.add('hidden');
+    document.getElementById('successPopup').classList.remove('hidden');
+
+    setTimeout(() => {
+        document.getElementById('successPopup').classList.add('hidden');
+    }, 3000);
+}, 2000);
+    </script>
+    <script src="./../js/inscriptionArtisan.js"></script>
+</body>
+</html>
