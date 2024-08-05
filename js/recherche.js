@@ -52,6 +52,10 @@ async function makeSearch(){
                 <h2 class="text-lg font-semibold">${item.nomArtisan}</h2>
                 <p class="text-gray-500">Metier: ${item.metier}</p>
                 <p class="text-gray-500">Lieu: ${item.local}</p>
+                <p class="text-gray-500">Quartier: ${item.adresseArtisan}</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=${item.latitude},${item.longitude}" target="_blank">
+                    <button style="background-color: #87CEEB; width: 300px; height: 50px;border-radius: 10px;">Voir sur la carte 📍</button>
+                </a><br/>
                 <a href="tel:+225${item.telArtisan}"><button style="background-color: #FD5D14; width: 300px; height: 50px;border-radius: 10px;">appel téléphonique 📞: ${item.telArtisan}</button></a>
                 <a aria-label="Chat on WhatsApp" href="https://wa.me/225${item.telArtisan}?text=bonjour%20*${item.nomArtisan}*%20j'ai%20besoin%20de%20tes%20service">
                 <button style="background-color: #FD5D14; width: 300px; height: 50px; border-radius: 10px;" class="bg-gray-200 text-gray-800 hover:bg-gray-300 mt-2 p-2 rounded">whatsapp 📞: ${item.telArtisan}</button>
