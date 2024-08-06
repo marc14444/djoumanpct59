@@ -5,7 +5,7 @@ function logout() {
     sessionStorage.removeItem('token');
     console.log("Déconnexion réussie !");
     confirm("voulez-vous vous Deconnectez ?");
-    window.location.href = '/index.html';
+    window.location.href = './../index.html';
 }
 
 const deconnexion = document.getElementById('deconnexion');
