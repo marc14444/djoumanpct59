@@ -2,4 +2,3 @@ const boutonSeach = document.querySelector("#recherche").addEventListener("click
     e.preventDefault();
     window.location.href = "./html/connexion.html";
 });
-

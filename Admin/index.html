@@ -47,9 +47,9 @@
       <li>
         <a href="#">
           <i class='bx bx-briefcase'></i>
-          <span class="link_name">Realisation</span>
+          <span class="link_name">Pack publicitaire</span>
         </a>
-        <span class="tooltip">Realisation</span>
+        <span class="tooltip">Pack publicitaire</span>
       </li>
 
       <li>
@@ -93,8 +93,8 @@
         <div class="profile_details">
           <img src="./image/personne.png" alt="profile image">
           <div class="profile_content">
-            <div class="name">Nom de l'Admin</div>
-            <div class="designation">Admin</div>
+            <div class="name"><span id="username"></span></div>
+            <div class="designation">Deconnexion</div>
           </div>
         </div>
         <i class="bx bx-log-out" id="log_out"></i>
@@ -110,9 +110,9 @@
         <i class='bx bx-chevron-down ml-2' id="profileDropdown" style="cursor: pointer;"></i>
       </div>
       <div id="profileInfo" class="dropdown-menu dropdown-menu-right p-3" style="display: none; position: absolute; right: 10px; top: 60px;">
-        <div class="dropdown-item">Nom: Admin name</div>
-        <div class="dropdown-item">Role: Admin</div>
-        <div class="dropdown-item">Email: admin@example.com</div>
+        <div class="dropdown-item"><span id="username"></span></div>
+        <div class="dropdown-item">Role: Administrateur</div>
+        <div class="dropdown-item"></div>
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item text-center text-primary">Voir plus</a>
       </div>
@@ -136,7 +136,7 @@
             <div class="card">
               <div class="card-body text-center">
                 <i class="bx bx-user bx-lg"></i>
-                <h5 class="card-title mt-3">Clients</h5>
+                <h5 class="card-title mt-3"><button id="diriger" class="btn btn-primary">Clients</button></h5>
               </div>
             </div>
           </a>
@@ -156,7 +156,7 @@
             <div class="card">
               <div class="card-body text-center">
                 <i class='bx bx-briefcase bx-lg'></i>
-                <h5 class="card-title mt-3">Realisation</h5>
+                <h5 class="card-title mt-3">Pack publicitaire</h5>
               </div>
             </div>
           </a>
@@ -207,5 +207,6 @@
 
   <!-- Scripts -->
   <script src="./js/script.js"></script>
+  <script src="./js/profil.js"></script>
 </body>
 </html>

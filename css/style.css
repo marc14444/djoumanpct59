@@ -312,3 +312,26 @@
     background: #FD5D14;
     color: #F4F6F8;
 }
+
+#video-container {
+    position: relative;
+    width: 500px;
+    height: 400px;
+}
+#custom-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.control-button {
+    background-color: #FD5D14;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}

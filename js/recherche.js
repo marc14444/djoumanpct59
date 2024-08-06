@@ -50,6 +50,7 @@ async function makeSearch(){
             <div class="bg-white rounded-lg p-4 shadow-lg" style="display:grid; justify-content: center; align-items: center;">
                 <img src="${item.selfie}" alt="Profile de ${item.nomArtisan}" class="rounded-full mb-4" style="border-radius: 50%; width: 100px; height: 100px;" />
                 <h2 class="text-lg font-semibold">${item.nomArtisan}</h2>
+                <h3 class="text-lg font-semibold">${item.nomEntreprise}</h3>
                 <p class="text-gray-500">Metier: ${item.metier}</p>
                 <p class="text-gray-500">Lieu: ${item.local}</p>
                 <p class="text-gray-500">Quartier: ${item.adresseArtisan}</p>

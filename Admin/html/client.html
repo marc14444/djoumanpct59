@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Clients</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .action-button {
+            background-color: #FD5D14;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-6 text-center">Liste des Clients</h1>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+            <table class="min-w-full table-auto">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="px-4 py-2">Nom</th>
+                        <th class="px-4 py-2">Email</th>
+                        <th class="px-4 py-2">Téléphone</th>
+                        <th class="px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="client-table-body">
+                    <!-- Les lignes des clients seront insérées ici par JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const token = localStorage.getItem('token'); // Récupérer le token depuis le localStorage
+
+        async function fetchClients() {
+            try {
+                const response = await fetch('http://localhost:3000/api/clients/get-all-clients', {
+                    method: "GET",
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const clients = await response.json();
+                loadClients(clients);
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        }
+
+        function loadClients(clients) {
+            const tbody = document.getElementById('client-table-body');
+            tbody.innerHTML = '';
+            clients.forEach((client, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="border px-4 py-2">${client.nomClient}</td>
+                    <td class="border px-4 py-2">${client.emailClient}</td>
+                    <td class="border px-4 py-2">${client.telClient}</td>
+                    <td class="border px-4 py-2 text-center">
+                        <button class="action-button" onclick="editClient(${index})">Modifier</button>
+                        <button class="action-button" onclick="deleteClient(${index})">Supprimer</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function editClient(index) {
+            const client = clients[index];
+            alert(`Modifier le client: ${client.nomClient}`);
+            // Implémentez ici la logique de modification du client
+        }
+
+        function deleteClient(index) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer ce client?')) {
+                clients.splice(index, 1);
+                loadClients(clients);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchClients);
+    </script>
+</body>
+</html>
