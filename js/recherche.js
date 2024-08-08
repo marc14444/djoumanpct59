@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/api/search/search-artisan-for-client/'
+const url = 'https://djumanpctbackend.onrender.com/api/search/search-artisan-for-client/'
 const btnRecherche = document.getElementById('recherche');
 const loading = document.getElementById('loading');
 loading.style.display = "none";

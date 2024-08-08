@@ -1,14 +1,14 @@
-# Utiliser une image nginx stable comme base
-FROM nginx:stable-alpine
+# Utiliser une image de base pour nginx
+FROM nginx:alpine
 
-# Supprimer le fichier de configuration par défaut de Nginx
-RUN rm -rf /etc/nginx/conf.d/default.conf
+# Supprimer la page par défaut de nginx
+RUN rm /usr/share/nginx/html/*
 
-# Copier le fichier index.html dans le conteneur Nginx
-COPY ./index.html /usr/share/nginx/html/index.html
+# Copier les fichiers statiques dans le répertoire de travail de nginx
+COPY . /usr/share/nginx/html
 
-# Exposer le port 80 pour que Nginx puisse servir votre application
+# Exposer le port sur lequel nginx va écouter
 EXPOSE 80
 
-# Commande à exécuter lorsque le conteneur démarre
+# Commande pour lancer nginx
 CMD ["nginx", "-g", "daemon off;"]
