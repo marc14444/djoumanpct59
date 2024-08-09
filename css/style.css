@@ -245,6 +245,14 @@
     .contact-form {
         margin-left: -90px;
     }
+    .seach{
+        padding-left: 2px;
+        padding-right: 2px;
+        font-size: 1rem;
+    }
+    .select{
+        width: 100px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -262,6 +270,14 @@
     #btn{
         font-size: 0.7rem;
         width: 100%;
+    }
+    .seach{
+        padding-left: 2px;
+        padding-right: 2px;
+        font-size: 1rem;
+    }
+    .select{
+        width: 100px;
     }
 }
 
