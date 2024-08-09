@@ -258,6 +258,12 @@
         background: var(--primary)
     }
 }
+@media(max-width: 600px){
+    #btn{
+        font-size: 0.7rem;
+        width: 100%;
+    }
+}
 
 .footer-shape::before {
     position: absolute;
@@ -275,7 +281,6 @@
     border: 2px solid black;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
     border-radius: 50px;
 
 }

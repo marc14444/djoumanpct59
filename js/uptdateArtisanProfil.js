@@ -1,4 +1,4 @@
-const url = "https://djumanpctbackend.onrender.com/api/artisans/update-password-artisan";
+const url = "http://localhost:3000/api/artisans/update-password-artisan";
 
 async function updateClient(nomClient, prenomClient, telClient, emailClient, passwordClient, confirmPassword) {
     try {
