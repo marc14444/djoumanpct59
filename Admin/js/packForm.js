@@ -6,7 +6,7 @@ document.getElementById('packForm').addEventListener('submit', async function(ev
     const prix = document.getElementById('prix').value;
 
     try {
-        const response = await fetch('http://localhost:3000/api/packs/create', {
+        const response = await fetch('https://djumanpctbackend.onrender.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

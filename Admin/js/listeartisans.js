@@ -1,4 +1,6 @@
-const artisansApiUrl = "http://localhost:3000/api/artisans/get-all-artisan";
+const artisansApiUrl = "https://djumanpctbackend.onrender.com/api/artisans/get-all-artisan";
+const deleteArtisanApiUrl = "https://djumanpctbackend.onrender.com/api/admin/delete-artisan";
+const totalArtisansElement = document.getElementById('totalArtisans');
 
 // Fonction pour récupérer la liste des artisans
 async function getAllArtisans() {
@@ -24,7 +26,9 @@ async function getAllArtisans() {
         if (!data.artisans || !Array.isArray(data.artisans)) {
             throw new Error("Les données reçues ne contiennent pas un tableau d'artisans");
         }
-
+        // Trier les artisans par date de création, du plus récent au plus ancien
+        data.artisans.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        
         return data.artisans;
     } catch (error) {
         console.error(error);
@@ -32,6 +36,36 @@ async function getAllArtisans() {
         document.getElementById('artisanMessage').style.color = 'red';
         document.getElementById('artisanMessage').style.fontSize = "1rem";
         return [];
+    }
+}
+
+// Fonction pour supprimer un artisan
+async function deleteArtisan(artisanId) {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error("Token non trouvé. Veuillez vous connecter.");
+        }
+
+        const response = await fetch(`${deleteArtisanApiUrl}/${artisanId}`, {
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("Erreur lors de la suppression de l'artisan");
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+        document.getElementById('artisanMessage').textContent = error.message;
+        document.getElementById('artisanMessage').style.color = 'red';
+        document.getElementById('artisanMessage').style.fontSize = "1rem";
     }
 }
 
@@ -78,6 +112,25 @@ function displayArtisans(artisans) {
             </div>
         `;
         artisansList.appendChild(artisanDiv);
+    });
+
+    // Mettre à jour le nombre total d'artisans
+    totalArtisansElement.textContent = `Total artisans : ${artisans.length}`;
+    totalArtisansElement.style.fontSize = '2rem';
+
+    // Ajouter les écouteurs d'événements pour les boutons "Supprimer"
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const artisanId = event.target.getAttribute('data-id');
+            const confirmation = confirm("Êtes-vous sûr de vouloir supprimer cet artisan ?");
+            if (confirmation) {
+                await deleteArtisan(artisanId);
+                // Recharger la liste des artisans après suppression
+                const artisans = await getAllArtisans();
+                displayArtisans(artisans);
+            }
+        });
     });
 }
 

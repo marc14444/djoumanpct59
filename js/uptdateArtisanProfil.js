@@ -1,70 +1,62 @@
-const url = "http://localhost:3000/api/artisans/update-password-artisan";
-
-async function updateClient(nomClient, prenomClient, telClient, emailClient, passwordClient, confirmPassword) {
+const url = "https://djumanpctbackend.onrender.com/api/artisans/update-artisan-profil";
+const token = sessionStorage.getItem('token');
+async function registerArtisan(formData) {
     try {
-        const token = localStorage.getItem('token'); // Assurez-vous que le token est bien stocké dans localStorage
-
-        if (!token) {
-            throw new Error("Utilisateur non connecté");
-        }
-
         const response = await fetch(url, {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Incluez le token dans les en-têtes
+                'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify({
-                nomClient,
-                prenomClient,
-                telClient,
-                emailClient,
-                passwordClient,
-                confirmPassword
-            }),
+            body: formData,
         });
 
-        const data = await response.json();
-
         if (!response.ok) {
-            message.textContent = 'La modification a échoué, veuillez vérifier vos informations !';
+            message.textContent = 'Erreur lors de la Modification, veuillez vérifier vos informations !';
             message.style.color = 'red';
             message.style.fontSize = "1rem";
-            throw new Error(data.message || "Erreur lors de la modification");
+            throw new Error("Erreur lors de la Modification");
         }
 
-        message.textContent = 'La modification a réussi !';
+        const data = await response.json();
+        console.log("Modification réussie", data);
+        message.textContent = 'Modification réussie !';
         message.style.color = 'green';
         message.style.fontSize = "1rem";
-
         setTimeout(() => {
-            window.location.href = './userProfil.html';
-        }, 5000);
-
+            window.location.href = './artisanProfil.html';
+        }, 5000);  // On attend 5 secondes avant de rediriger vers la page de connexion
         return data;
     } catch (e) {
         console.error(e);
-        message.textContent = 'Erreur lors de la modification';
+        message.textContent = 'Erreur lors de la Modification !';
         message.style.color = 'red';
         message.style.fontSize = "1rem";
         return { statut: false, message: "Erreur de connexion au serveur" };
     }
 }
 
-document.getElementById('modifier').addEventListener('submit', async (event) => {
+let message = document.getElementById('successMessage');
+document.getElementById('inscriptionForm').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const nomClient = event.target.nomClient.value;
-    const prenomClient = event.target.prenomClient.value;
-    const telClient = event.target.telClient.value;
-    const emailClient = event.target.emailClient.value;
-    const passwordClient = event.target.passwordClient.value;
-    const confirmPassword = event.target.confirmPassword.value;
+    const form = event.target; // Assurez-vous que c'est bien le formulaire
+    const formData = new FormData(form);
 
-    const result = await updateClient(nomClient, prenomClient, telClient, emailClient, passwordClient, confirmPassword);
+    const result = await registerArtisan(formData);
+    console.log("result ici", result);
 
     if (result.statut) {
-        console.log("La modification a réussi", result);
+        console.log("Modification réussie", result);
     } else {
-        console.log("Erreur lors de la modification", result);
+        console.log("Erreur de la Modification", result);
     }
+    //document.getElementById('loading').classList.remove('hidden');
+
+setTimeout(() => {
+    document.getElementById('loading').classList.add('hidden');
+    document.getElementById('successPopup').classList.remove('hidden');
+
+    setTimeout(() => {
+        document.getElementById('successPopup').classList.add('hidden');
+    }, 3000);
+}, 2000);
 });

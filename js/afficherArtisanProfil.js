@@ -63,5 +63,5 @@ const bouttonRetour = document.getElementById('bouttonRetour').addEventListener(
 });
 
 const boutonDeconnexion = document.getElementById('bouttonJoinWhatsapp').addEventListener('click', () => {;
-    window.location.href = './updateProfil.html';
+    window.location.href = './updateArtisan.html';
 });

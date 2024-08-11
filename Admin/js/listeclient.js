@@ -1,4 +1,6 @@
-const apiUrl = "http://localhost:3000/api/clients/get-all-clients";
+const apiUrl = "https://djumanpctbackend.onrender.com/api/clients/get-all-clients";
+const deleteClientApiUrl = "https://djumanpctbackend.onrender.com/api/admin/delete-client";
+const totalClientsElement = document.getElementById('totalClients');
 
 // Fonction pour récupérer la liste des clients
 async function getAllClients() {
@@ -25,6 +27,9 @@ async function getAllClients() {
             throw new Error("Les données reçues ne contiennent pas un tableau de clients");
         }
 
+        // Trier les clients par date de création, du plus récent au plus ancien
+        data.clients.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
         return data.clients;
     } catch (error) {
         console.error(error);
@@ -32,6 +37,36 @@ async function getAllClients() {
         document.getElementById('message').style.color = 'red';
         document.getElementById('message').style.fontSize = "1rem";
         return [];
+    }
+}
+
+// Fonction pour supprimer un client
+async function deleteClient(clientId) {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error("Token non trouvé. Veuillez vous connecter.");
+        }
+
+        const response = await fetch(`${deleteClientApiUrl}/${clientId}`, {
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("Erreur lors de la suppression du client");
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+        document.getElementById('message').textContent = error.message;
+        document.getElementById('message').style.color = 'red';
+        document.getElementById('message').style.fontSize = "1rem";
     }
 }
 
@@ -58,6 +93,25 @@ function displayClients(clients) {
             </div>
         `;
         clientsList.appendChild(clientDiv);
+    });
+
+    // Mettre à jour le nombre total de clients
+    totalClientsElement.textContent = `Total clients : ${clients.length}`;
+    totalClientsElement.style.fontSize = '2rem';
+
+    // Ajouter les écouteurs d'événements pour les boutons "Supprimer"
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const clientId = event.target.getAttribute('data-id');
+            const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce client ?");
+            if (confirmation) {
+                await deleteClient(clientId);
+                // Recharger la liste des clients après suppression
+                const clients = await getAllClients();
+                displayClients(clients);
+            }
+        });
     });
 }
 
