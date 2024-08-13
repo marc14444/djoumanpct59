@@ -1,5 +1,5 @@
-const artisansApiUrl = "https://djumanpctbackend.onrender.com/api/artisans/get-all-artisan";
-const deleteArtisanApiUrl = "https://djumanpctbackend.onrender.com/api/admin/delete-artisan";
+const artisansApiUrl = "http://localhost:3000/api/artisans/get-all-artisan";
+const deleteArtisanApiUrl = "http://localhost:3000/api/admin/delete-artisan";
 const totalArtisansElement = document.getElementById('totalArtisans');
 
 // Fonction pour récupérer la liste des artisans

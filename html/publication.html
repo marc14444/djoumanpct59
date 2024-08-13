@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white dark:bg-zinc-800 p-8 rounded-3xl shadow-lg w-full max-w-sm">
+            <button class="text-black dark:text-white mb-4" id="boutonRetour">
+                <img src="./../icons/fleche-gauche.png" alt="" class="w-6 h-6">
+            </button>
+            <h2 class="text-center text-2xl font-bold text-black dark:text-white mb-6">Ajouter une Publication</h2>
+            
+            <form id="publicationForm" class="space-y-4" enctype="multipart/form-data">
+                <input type="text" id="libPub" name="libPub" placeholder="Detaillez votre publication" class="w-full p-3 rounded-lg border border-zinc-300 dark:border-zinc-600 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                
+                <input type="file" id="image" name="image" accept="image/*,video/*" class="w-full p-3 rounded-lg border border-zinc-300 dark:border-zinc-600 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                
+                <button type="submit" class="w-full p-3 bg-black text-white rounded-lg" id="publier">Publier</button>
+            </form>
+
+            <div class="flex items-center my-4">
+                <hr class="flex-grow border-t border-zinc-300 dark:border-zinc-600">
+            </div>
+            
+            <!-- Section pour afficher les publications -->
+            <div id="publicationsSection" class="mt-6">
+                <h3 class="text-center text-xl font-bold text-black dark:text-white mb-4">Vos Publications</h3>
+                <div id="publicationsContainer" class="space-y-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Indicateur de chargement -->
+    <div id="loading" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
+    </div>
+
+    <!-- Popup de succès -->
+    <div id="successPopup" class="hidden fixed inset-0 flex items-center justify-center z-50">
+        <div class="bg-white p-4 rounded-lg shadow-lg">
+            <p id="message" class="text-green-500">Publication ajoutée avec succès !</p>
+        </div>
+    </div>
+
+    <script>
+        const token = localStorage.getItem('token');
+
+        // Fonction pour charger et afficher les publications
+        async function loadPublications() {
+            if (!token) {
+                alert('Vous devez être connecté pour voir vos publications.');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/api/clients/publications/get-all-publications-artisan-connected', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
+                
+                const result = await response.json();
+
+                // Accédez au tableau des publications dans l'objet 'data'
+                const publications = result.data;
+
+                // Vérifiez si 'publications' est bien un tableau
+                if (!Array.isArray(publications)) {
+                    console.error('Les publications ne sont pas un tableau:', publications);
+                    return;
+                }
+                const container = document.getElementById('publicationsContainer');
+                container.innerHTML = '';
+
+                publications.forEach(publication => {
+                    const publicationElement = document.createElement('div');
+                    publicationElement.className = 'p-4 bg-zinc-100 dark:bg-zinc-700 rounded-lg shadow-md';
+                    publicationElement.innerHTML = `
+                        <h4 class="text-lg font-semibold text-black dark:text-white">${publication.libPub}</h4>
+                        ${publication.image ? `<img src="${publication.image}" alt="image" class="w-full rounded-lg mt-2">` : ''}
+                        <div class="flex justify-end space-x-2 mt-2">
+                            <button class="text-red-500" onclick="deletePublication('${publication._id}')">Supprimer</button>
+                            <button class="text-blue-500" onclick="editPublication('${publication._id}')">Modifier</button>
+                        </div>
+                    `;
+                    container.appendChild(publicationElement);
+                });
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+
+        // Charger les publications au chargement de la page
+        window.onload = loadPublications;
+
+        document.getElementById('publicationForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            if (!token) {
+                alert('Vous devez être connecté pour publier.');
+                return;
+            }
+
+            document.getElementById('loading').classList.remove('hidden');
+
+            const formData = new FormData();
+            formData.append('libPub', document.getElementById('libPub').value);
+            formData.append('image', document.getElementById('image').files[0]);
+
+            try {
+                const response = await fetch('http://localhost:3000/api/clients/publications/add-publication', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('successPopup').classList.remove('hidden');
+
+                setTimeout(function() {
+                    document.getElementById('successPopup').classList.add('hidden');
+                    loadPublications();  // Recharger les publications après en avoir ajouté une nouvelle
+                }, 3000);
+            } catch (error) {
+                document.getElementById('loading').classList.add('hidden');
+                console.error('Erreur:', error);
+            }
+        });
+
+        // Fonction pour supprimer une publication
+        async function deletePublication(id) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/clients/publications/delete-publication/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
+                const data = await response.json();
+                if (data.success) {
+                    loadPublications();  // Recharger les publications après la suppression
+                } else {
+                    console.error('Erreur lors de la suppression:', data.message);
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+
+        // Fonction pour modifier une publication
+        async function editPublication(id) {
+            // Vous pouvez implémenter ici la fonctionnalité de modification
+            alert('Fonctionnalité de modification en cours de développement.');
+        }
+    </script>
+
+    <style>
+        .loader {
+            border-top-color: #FD5D14;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>

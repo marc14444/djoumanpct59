@@ -1,4 +1,4 @@
-const url = "https://djumanpctbackend.onrender.com/api/artisans/signup-artisan";
+const url = "http://localhost:3000/api/artisans/signup-artisan";
 
 async function registerArtisan(formData) {
     try {

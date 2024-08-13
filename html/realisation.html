@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white dark:bg-zinc-800 p-8 rounded-3xl shadow-lg w-full max-w-3xl">
+            <h2 class="text-center text-2xl font-bold text-black dark:text-white mb-6">Publications de l'Artisan</h2>
+            <div id="publicationsContainer" class="space-y-4"></div>
+        </div>
+    </div>
+
+    <script>
+       async function loadArtisanPublications() {
+    const params = new URLSearchParams(window.location.search);
+    const artisanId = params.get('artisanId');
+
+    if (!artisanId) {
+        alert('Aucun artisan sélectionné.');
+        return;
+    }
+
+    try {
+        // Appel GET avec artisanId en paramètre d'URL
+        const response = await fetch(`http://localhost:3000/api/clients/publications/get-publications-by-artisan/${artisanId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const result = await response.json();
+        const publications = result.data;
+
+        const container = document.getElementById('publicationsContainer');
+        container.innerHTML = '';
+
+        if (publications.length > 0) {
+            publications.forEach(publication => {
+                const publicationElement = document.createElement('div');
+                publicationElement.className = 'p-4 bg-zinc-100 dark:bg-zinc-700 rounded-lg shadow-md';
+                publicationElement.innerHTML = `
+                    <h4 class="text-lg font-semibold text-black dark:text-white">${publication.libPub}</h4>
+                    ${publication.image ? `<img src="${publication.image}" alt="image" class="w-full rounded-lg mt-2">` : ''}
+                    <p class="text-gray-500">${new Date(publication.createdAtPub).toLocaleDateString()}</p>
+                `;
+                container.appendChild(publicationElement);
+            });
+        } else {
+            container.innerHTML = '<p class="text-gray-500">Aucune publication trouvée pour cet artisan.</p>';
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+    }
+}
+
+        window.onload = loadArtisanPublications;
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-const url = "https://djumanpctbackend.onrender.com/api/admin/signinAdmin";
+const url = "http://localhost:3000/api/admin/signinAdmin";
 
 async function loginClient(username, password){
     try{

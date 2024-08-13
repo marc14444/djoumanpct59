@@ -1,4 +1,4 @@
-const url = "https://djumanpctbackend.onrender.com/api/clients/loginClient";
+const url = "http://localhost:3000/api/clients/loginClient";
 
 async function loginClient(telClient, passwordClient){
     try{

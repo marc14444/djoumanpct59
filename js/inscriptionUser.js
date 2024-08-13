@@ -1,4 +1,4 @@
-const url = "https://djumanpctbackend.onrender.com/api/clients/signinClient";
+const url = "http://localhost:3000/api/clients/signinClient";
 
 async function registerClient(nomClient, prenomClient, telClient, emailClient, passwordClient, confirmPassword) {
     try {
