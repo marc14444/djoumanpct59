@@ -1,5 +1,5 @@
-const artisansApiUrl = "http://localhost:3000/api/artisans/get-all-artisan";
-const deleteArtisanApiUrl = "http://localhost:3000/api/admin/delete-artisan";
+const artisansApiUrl = "https://djumanpctbackend.onrender.com/api/artisans/get-all-artisan";
+const deleteArtisanApiUrl = "https://djumanpctbackend.onrender.com/api/admin/delete-artisan";
 const totalArtisansElement = document.getElementById('totalArtisans');
 
 // Fonction pour récupérer la liste des artisans
@@ -94,6 +94,13 @@ function displayArtisans(artisans) {
                 <p class="card-text"><strong>Note Moyenne:</strong> ${artisan.averageNote}</p>
                 <p class="card-text"><strong>Nombre de Notes:</strong> ${artisan.noteCount}</p>
                 <p class="card-text"><strong>Status:</strong> ${artisan.statusArtisan}</p>
+                <p class="card-text"><strong>experience:</strong> ${artisan.experience} ans</p>
+                //heure d'ouverture
+                <p class="card-text"><strong>Heure d'Ouverture:</strong> ${artisan.ouverture}</p>
+                //heure de fermeture
+                <p class="card-text"><strong>Heure de Fermeture:</strong> ${artisan.fermeture}</p>
+                <p class="card-text"><strong>Date de Création:</strong> ${new Date(artisan.createdAt).toLocaleString()}</p>
+                <p class="card-text"><strong>Date de Mise à Jour:</strong> ${new Date(artisan.updatedAt).toLocaleString()}</p>
                 <p class="card-text"><strong>Date de Création:</strong> ${new Date(artisan.createdAt).toLocaleString()}</p>
                 <p class="card-text"><strong>Date de Mise à Jour:</strong> ${new Date(artisan.updatedAt).toLocaleString()}</p>
                 <div class="card-text">

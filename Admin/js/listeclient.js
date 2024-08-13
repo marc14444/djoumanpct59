@@ -1,5 +1,5 @@
-const apiUrl = "http://localhost:3000/api/clients/get-all-clients";
-const deleteClientApiUrl = "http://localhost:3000/api/admin/delete-client";
+const apiUrl = "https://djumanpctbackend.onrender.com/api/clients/get-all-clients";
+const deleteClientApiUrl = "https://djumanpctbackend.onrender.com/api/admin/delete-client";
 const totalClientsElement = document.getElementById('totalClients');
 
 // Fonction pour récupérer la liste des clients
