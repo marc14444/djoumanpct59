@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/api/artisans/update-artisan-profil";
+const url = "https://djumanpctbackend.onrender.com/api/artisans/update-artisan-profil";
 const token = sessionStorage.getItem('token');
 async function registerArtisan(formData) {
     try {

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         return;
     }
 
-    const url = `http://localhost:3000/api/clients/publications/get-all-publications-artisan/${artisanId}`;
+    const url = `https://djumanpctbackend.onrender.com/api/clients/publications/get-all-publications-artisan/${artisanId}`;
     
     try {
         const response = await fetch(url, {

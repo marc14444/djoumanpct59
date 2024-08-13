@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/api/artisans/login-artisan";
+const url = "https://djumanpctbackend.onrender.com/api/artisans/login-artisan";
 
 // Fonction asynchrone pour la connexion de l'artisan
 async function loginArtisan(telArtisan, passwordArtisan) {
