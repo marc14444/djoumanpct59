@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <style>
+   <!--  <style>
         .loader {
             border-top-color: #FD5D14;
             animation: spin 1s ease-in-out infinite;
@@ -16,7 +16,7 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-    </style>
+    </style> -->
     <div class="min-h-screen flex items-center justify-center bg-orange-500">
         <div class="bg-white rounded-3xl shadow-lg p-8 w-full max-w-3xl">
             <button class="text-xl mb-4" id="boutonRetour">
@@ -98,7 +98,7 @@
                     <label for="file3" class="placeholder">Ajouter une photo de profil</label>
                 </div>
                 <div class="col-span-full flex justify-center mt-4">
-                    <button class="bg-black text-white py-3 px-6 rounded-lg">Enregistrer</button>
+                    <button class="bg-black text-white py-3 px-6 rounded-lg focus:bg-orange-500">Enregistrer</button>
                 </div>
             </form>
             <div class="flex items-center justify-center mt-6">
@@ -158,17 +158,30 @@
     console.log('La géolocalisation n\'est pas prise en charge par ce navigateur.');
     }
 
-    document.getElementById('loading').classList.remove('hidden');
-
-setTimeout(() => {
-    document.getElementById('loading').classList.add('hidden');
-    document.getElementById('successPopup').classList.remove('hidden');
-
-    setTimeout(() => {
-        document.getElementById('successPopup').classList.add('hidden');
-    }, 3000);
-}, 2000);
+    document.getElementById('inscriptionForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          document.getElementById('loading').classList.remove('hidden');
+  
+          setTimeout(function() {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('successPopup').classList.remove('hidden');
+  
+            setTimeout(function() {
+              document.getElementById('successPopup').classList.add('hidden');
+            }, 3000);
+          }, 2000);
+        });
     </script>
+      <style>
+        .loader {
+            border-top-color: #FD5D14;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
     <script src="./../js/inscriptionArtisan.js"></script>
 </body>
 </html>

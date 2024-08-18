@@ -171,10 +171,39 @@
     <div id="popupModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg">
             <h3 class="text-xl font-bold mb-4" id="popupTitle"></h3>
-            <p>Vous avez choisi ce pack publicitaire.</p>
+            <p>Veuillez sélectionner un opérateur pour le paiement :</p>
+            <select id="operatorSelect" class="border rounded p-2 mb-4 w-full">
+                <option value="" disabled selected>Sélectionnez un opérateur</option>
+                <option value="wave">Wave</option>
+                <option value="mtn">MTN</option>
+                <option value="orange">Orange</option>
+            </select>
+            <button class="bg-blue-500 text-white py-2 px-4 rounded" onclick="confirmPurchase()">Confirmer</button>
             <button class="mt-4 bg-red-500 text-white py-2 px-4 rounded" onclick="closePopup()">Fermer</button>
         </div>
     </div>
+    
+    <script>
+        function openPopup(packTitle) {
+            document.getElementById('popupTitle').textContent = packTitle;
+            document.getElementById('popupModal').style.display = 'flex';
+        }
+    
+        function closePopup() {
+            document.getElementById('popupModal').style.display = 'none';
+        }
+    
+        function confirmPurchase() {
+            const operator = document.getElementById('operatorSelect').value;
+            if (operator) {
+                alert('Vous avez choisi ' + operator + ' pour le paiement du ' + document.getElementById('popupTitle').textContent);
+                closePopup();
+            } else {
+                alert('Veuillez sélectionner un opérateur.');
+            }
+        }
+    </script>
+    
     
 
     <!-- Footer Start -->

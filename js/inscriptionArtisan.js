@@ -43,6 +43,7 @@ document.getElementById('inscriptionForm').addEventListener('submit', async (eve
 
     if (result.statut) {
         console.log("Inscription réussie", result);
+        
     } else {
         console.log("Erreur d'inscription", result);
     }
