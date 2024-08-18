@@ -29,7 +29,7 @@
             <form id="inscriptionForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input type="text" name="nomArtisan" placeholder="Nom" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
                 <input type="text" name="prenomArtisan" placeholder="Prenom" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
-                <input type="tel" name="telArtisan" placeholder="Numero de téléphone (whatsapp)" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="tel" name="telArtisan" placeholder="Numero de téléphone (whatsapp)" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500" required minlength="10">
                 <input type="text" name="adresseArtisan" placeholder="Quartier" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
                 <input type="email" name="emailArtisan" placeholder="Email" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
                 <select name="metier" id="metier">
@@ -74,8 +74,8 @@
                 
                 <input type="text" name="alphabetisation" placeholder="Savez-vous lire et écrire?" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
                 <input type="text" name="nomEntreprise" placeholder="Nom de votre entreprise" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
-                <input type="password" name="passwordArtisan" placeholder="mot de passe" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
-                <input type="password" name="confirmPasswordArtisan" placeholder="confirmer le mot de passe" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="password" name="passwordArtisan" placeholder="mot de passe" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500" minlength="8" require>
+                <input type="password" name="confirmPasswordArtisan" placeholder="confirmer le mot de passe" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500" minlength="8" require>
                 <div class="file-input-container mb-4">
                     <input type="time" name="ouverture" placeholder="heure d'ouverture" class="p-3 rounded-lg border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
                     <label for="time1" class="placeholder">Heure d'ouverture</label>
