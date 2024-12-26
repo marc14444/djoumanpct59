@@ -42,9 +42,9 @@ async function makeSearch() {
     const response = await fetch(`${url}?latitude=${dataSend.latitude}&longitude=${dataSend.longitude}&metier=${dataSend.metier}&rayon=${dataSend.rayon}&mode=${dataSend.mode}`, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include' // Inclure les cookies dans la requête
     });
 
     if (!response.ok) {
