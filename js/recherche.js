@@ -29,7 +29,7 @@ async function makeSearch() {
       alert('Impossible de récupérer la position');
       return;
     }
-    
+
     const { latitude, longitude } = position.coords;
     const dataSend = {
       latitude: latitude,
@@ -59,15 +59,15 @@ async function makeSearch() {
     messageEnCasDeNonTrouve.style.display = "none";
     document.getElementById('loading').style.display = 'flex';
 
-    // Simulate a network request or any async operation
     setTimeout(function () {
       document.getElementById('loading').style.display = 'none';
     }, 2000);
 
-    const data = await response.json();
-    console.log("recherche réussie", data);
+    const result = await response.json();
+    const artisans = result.data;
+
     let html = '';
-    data.searchResults.forEach(item => {
+    artisans.forEach(item => {
       html += `
       <div class="bg-white rounded-lg p-4 shadow-lg" style="display:grid; justify-content: center; align-items: center;">
           <img src="${item.selfie}" alt="Profile de ${item.nomArtisan}" class="rounded-full mb-4" style="border-radius: 50%; width: 100px; height: 100px;" />
@@ -76,9 +76,9 @@ async function makeSearch() {
           <p class="text-gray-500">Métier: ${item.metier}</p>
           <p class="text-gray-500">Lieu: ${item.local}</p>
           <p class="text-gray-500">Quartier: ${item.adresseArtisan}</p>
-          <p class="text-gray-500">experience: ${item.experience} ans</p>
-          <p class="text-gray-500">heure d'ouverture: ${item.ouverture}</p>
-          <p class="text-gray-500">heure de fermeture: ${item.fermeture}</p>
+          <p class="text-gray-500">Experience: ${item.experience} ans</p>
+          <p class="text-gray-500">Heure d'ouverture: ${item.ouverture}</p>
+          <p class="text-gray-500">Heure de fermeture: ${item.fermeture}</p>
           <a href="https://www.google.com/maps/search/?api=1&query=${item.latitude},${item.longitude}" target="_blank">
               <button style="background-color: #87CEEB; width: 300px; height: 50px;border-radius: 10px;">Voir sur la carte 📍</button>
           </a><br/>
@@ -95,8 +95,7 @@ async function makeSearch() {
       `;
     });
     document.getElementById('resultSearch').innerHTML = html;
-    return data;
-
+    document.getElementById('resultSearch').style.display = "block"; // Assurez-vous que l'élément est visible
   } catch (e) {
     console.log(e);
     return;
@@ -106,7 +105,7 @@ async function makeSearch() {
 btnRecherche.addEventListener('click', (e) => {
   e.preventDefault();
   makeSearch();
-  const afficher = document.getElementById('resultSearch').style.display = "block";
+  document.getElementById('resultSearch').style.display = "block";
 });
 
 function viewRealisations(artisanId) {
