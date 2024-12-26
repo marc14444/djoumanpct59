@@ -17,9 +17,9 @@ async function loginClient(telClient, passwordClient){
             message.style.color = 'red';
             message.style.fontSize = "1rem";
             throw new Error("Veuillez vérifier votre connexion");
-        }
+        } 
         const data = await response.json();
-        localStorage.setItem('userData', JSON.stringify(data.data));
+        localStorage.setItem('userData', JSON.stringify(data .data));
         localStorage.setItem('token', data.token);
         sessionStorage.setItem('userData', JSON.stringify(data.data));
         sessionStorage.setItem('token', JSON.stringify(data.token));

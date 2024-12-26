@@ -2,8 +2,7 @@ const url = "https://djumanpctbackend.onrender.com/api/clients/update-client-pro
 
 async function updateClient(nomClient, prenomClient, telClient, emailClient, passwordClient, confirmPassword) {
     try {
-        const token = localStorage.getItem('token'); // Assurez-vous que le token est bien stocké dans localStorage
-
+        const token = localStorage.getItem('token'); 
         if (!token) {
             throw new Error("Utilisateur non connecté");
         }
@@ -12,7 +11,7 @@ async function updateClient(nomClient, prenomClient, telClient, emailClient, pas
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Incluez le token dans les en-têtes
+                'Authorization': `Bearer ${token}` 
             },
             body: JSON.stringify({
                 nomClient,

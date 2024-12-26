@@ -38,7 +38,7 @@ async function registerArtisan(formData) {
 let message = document.getElementById('successMessage');
 document.getElementById('inscriptionForm').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const form = event.target; // Assurez-vous que c'est bien le formulaire
+    const form = event.target; 
     const formData = new FormData(form);
 
     const result = await registerArtisan(formData);
